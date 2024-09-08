@@ -1,0 +1,55 @@
+iam > add role for first > storage adin{cloud storage}
+
+
+shell-
+
+gsutil cp [schema]
+
+ls > cat 
+
+
+big query > create dataset
+
+crete bucket
+
+crete table 
+
+
+data flow > create a job from template
+
+
+dataproc > create cluster
+>
+then clustr> vm insta > first ssh paste 
+
+seperate submit job
+
+
+create api key 
+dataproc > ssh export api_key =
+cat > request.json <<EOF 
+{
+  "config": {
+      "encoding":"FLAC",
+      "languageCode": "en-US"
+  },
+  "audio": {
+      "uri":"gs://cloud-training/gsp323/task3.flac"
+  }
+}
+EOF
+
+curl -s -X POST -H "Content-Type: application/json" --data-binary @request.json \
+"https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}" > result.json
+
+
+
+gcloud iam service-accounts create my-natlang-sa
+
+gcloud iam service-accounts keys create ~/key.json --iam-account my-natlang-sa@{GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com
+
+
+export GOOGLE_APPLICATION_CREDENTIALS="/home/USER/key.json"
+
+gcloud ml language analyze-entities --content="Old Norse texts portray Odin as one-eyed and long-bearded, frequently wielding a spear named Gungnir and wearing a cloak and a broad hat." > result.json
+
